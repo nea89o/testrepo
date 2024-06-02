@@ -11,6 +11,7 @@ jobs:
           gh release download "$TAG" -p '*.jar'
         env:
           TAG: ${{ github.event.release.tag_name }}
+          GH_TOKEN: ${{ github.token }}
       - name: Show files
         run: |
           ls -Rla .
