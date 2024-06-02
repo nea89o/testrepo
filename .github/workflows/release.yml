@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: Download file
         run: |
-          gh repo $TAG -p '*.jar'
+          gh release download "$TAG" -p '*.jar'
         env:
           TAG: ${{ github.event.release.tag_name }}
       - name: Show files
