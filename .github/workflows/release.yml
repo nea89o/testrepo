@@ -8,9 +8,10 @@ jobs:
     steps:
       - name: Download file
         run: |
-          gh release download "$TAG" -p '*.jar'
+          gh release download "$TAG" -p '*.jar' --repo "$REPO"
         env:
           TAG: ${{ github.event.release.tag_name }}
+          REPO: ${{ github.repository }}
           GH_TOKEN: ${{ github.token }}
       - name: Show files
         run: |
