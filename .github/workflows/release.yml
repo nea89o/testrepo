@@ -1,0 +1,16 @@
+on:
+  release:
+    types:
+       - published
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download file
+        run: |
+          gh repo $TAG -p '*.jar'
+        env:
+          TAG: ${{ github.event.release.tag_name }}
+      - name: Show files
+        run: |
+          ls -Rla .
